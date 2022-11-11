@@ -1,9 +1,11 @@
 <?php 
 ini_set('default_charset','UTF-8');
 include_once "php/ValidaDados.php";
+include_once "php/Session.php";
+$SessionValida -> ValidaSession();
 ?>
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE HTML >
+<html lang="PT-BR">
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
@@ -28,14 +30,17 @@ include_once "php/ValidaDados.php";
     $ValidaInputs -> ValidaEmail($Email);
     ?>
    </p>
-   <input type="text" name="Email" id="Email" placeholder="Seu Email">
+   <input type="text" name="Email" id="Email" placeholder="Seu Email" title="Seu Email">
    <p id="ErrorSenha">
     <?php 
      $ValidaInputs -> ValidaSenha($Senha);
     ?>
    </p>
-   <input type="password" name="Senha" id="Senha" placeholder="Sua Senha">
-   <input type="submit" value="Logar">
+   <input type="password" name="Senha" id="Senha" placeholder="Sua Senha" title="Sua Senha">
+   <input type="submit" value="Logar" title="Logar">
+   <?php 
+   $ValidaInputs -> LogaNoSistema($Email, $Senha);
+   ?>
  </form>
 </main>
 <script type="text/javascript" src="JS/ValidaForm.js" deffer></script>
