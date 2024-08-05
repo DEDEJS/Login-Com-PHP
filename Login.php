@@ -1,8 +1,6 @@
 <?php 
 ini_set('default_charset','UTF-8');
-include_once "php/ValidaDados.php";
-include_once "php/Session.php";
-$SessionValida -> ValidaSession();
+
 ?>
 <!DOCTYPE HTML >
 <html lang="PT-BR">
@@ -11,9 +9,11 @@ $SessionValida -> ValidaSession();
   <title>Login</title>
   <meta name="viewport" content="initial-scale=1">
   <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="css/Menu.css">
+  <link rel="stylesheet" type="text/css" href="css/form.css">
+
 </head>
-<body onload="return Validacao();">
-<header>
+<body >
 <nav>
  <ul>
   <li><a href="Cadastro.php" title="Cadastrar">Cadastrar</a></li>
@@ -21,29 +21,26 @@ $SessionValida -> ValidaSession();
  </ul>
 </nav>
 
- <h1>Login</h1> 
-</header>
 <main>
  <form method="post" action="#">
-  <p id="ErrorEmail">
+ <h1>Login</h1> 
+
+ <p id="ErrorEmail">
    <?php 
-    $ValidaInputs -> ValidaEmail($Email);
+  
     ?>
    </p>
    <input type="text" name="Email" id="Email" placeholder="Seu Email" title="Seu Email">
    <p id="ErrorSenha">
     <?php 
-     $ValidaInputs -> ValidaSenha($Senha);
+    
     ?>
    </p>
    <input type="password" name="Senha" id="Senha" placeholder="Sua Senha" title="Sua Senha">
    <input type="submit" value="Logar" title="Logar">
-   <?php 
-   $ValidaInputs -> LogaNoSistema($Email, $Senha);
-   ?>
+   
  </form>
 </main>
-<script type="text/javascript" src="JS/ValidaForm.js" deffer></script>
 
 </body>
 </html>

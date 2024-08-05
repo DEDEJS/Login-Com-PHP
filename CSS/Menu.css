@@ -1,0 +1,20 @@
+nav{
+    height: 70px;
+    width:100%;
+    background-color: aquamarine;
+    padding-bottom: 2%;
+}
+nav li{ 
+    position:relative;
+    float:left;
+    margin-left: 15%;
+    margin-top: 2%;
+}
+nav ul li{
+    cursor: pointer;
+    margin-left: 8%;
+}
+nav ul li a{
+    color:#050505;
+    font-size: larger;
+}
