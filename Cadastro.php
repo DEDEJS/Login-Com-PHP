@@ -1,6 +1,6 @@
 <?php 
 ini_set('default_charset','UTF-8');
-
+include_once "php/ValidaInput.php";
 ?>
 <!DOCTYPE HTML>
 <html lang="PT-BR">
@@ -28,20 +28,20 @@ ini_set('default_charset','UTF-8');
 <div class="Form">
    <div>
     <p id="ErrorNome">
-     Campo Nome Vázio
+    <?php $CadastroValidado -> ValidaNomeCadastro($NomeCadastro); ?>
     </p>
    <input type="text" name="Nome" id="Nome" placeholder="Seu Nome" title="Campo Nome">
 </div>
    <p id="ErrorEmail">
-   Campo Email Vázio
+   <?php $CadastroValidado -> ValidaEmailCadastro($EmailCadastro); ?>
    </p>
    <input type="text" name="Email" id="Email" placeholder="Seu Email" title="Campo Email">
    <p id="ErrorSenha">
-     Campo Senha Vázio
-   </p>
+   <?php $CadastroValidado -> ValidaSenhaCadastro($SenhaCadastro); ?>
+     </p>
    <input type="password" name="Senha" id="Senha" placeholder="Sua Senha" title="Campo Senha">
    <p id="ErrorConfirmaSenha">
-    Campo Confirmar Senha Vázio
+   <?php $CadastroValidado -> ValidaSenhaConfirmaCadastro($ConfirmaSenhaCadastro); ?>
    </p>
    <input type="password" name="ConfirmaSenha" id="ConfirmaSenha" placeholder="Confirmar Senha" title="Confirmar Senha">
    <input type="submit" value="Cadastrar" title="Cadastrar">
@@ -50,7 +50,7 @@ ini_set('default_charset','UTF-8');
 
 </main>
 
-<!--<script type="text/javascript" src="JS/ValidaForm.js" deffer></script>-->
+<script type="text/javascript" src="JS/ValidaForm.js" deffer></script>
 
 </body>
 </html>

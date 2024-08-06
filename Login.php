@@ -1,6 +1,6 @@
 <?php 
 ini_set('default_charset','UTF-8');
-
+include_once "php/ValidaInput.php";
 ?>
 <!DOCTYPE HTML >
 <html lang="PT-BR">
@@ -26,15 +26,11 @@ ini_set('default_charset','UTF-8');
  <h1>Login</h1> 
 
  <p id="ErrorEmail">
-   <?php 
-  
-    ?>
+   <?php $LoginValidado -> ValidaEmailLogin($EmailLogin);?>
    </p>
    <input type="text" name="Email" id="Email" placeholder="Seu Email" title="Seu Email">
    <p id="ErrorSenha">
-    <?php 
-    
-    ?>
+    <?php $LoginValidado -> ValidaSenhaLogin($SenhaLogin); ?>
    </p>
    <input type="password" name="Senha" id="Senha" placeholder="Sua Senha" title="Sua Senha">
    <input type="submit" value="Logar" title="Logar">
