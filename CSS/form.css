@@ -1,15 +1,19 @@
-form h1{
-    text-align: center;
-    margin-top: 2%;
+nav img{
+    display: none;
 }
+
 form{
     padding:2%;
     background-color: rgb(234, 241, 239);
     border-radius: 5px;
     border: none;
     width: 50%;
-    margin: 1% 0% 0% 25%;
+   margin: 3% auto;
 
+}
+form h1{
+    text-align: center;
+    margin-top: 2%;
 }
 form input[type='text'], form input[type='email'], form input[type='password']{
     padding:2%;
@@ -28,10 +32,24 @@ form input[type='submit']{
     width: 30%;
     background-color: #fff8dc;
     margin: 4% 0% 0% 35%;
-
+    cursor: pointer;
 }
 form p{
     color:#ff0000;
     text-align: center;
     margin-top: 1%;
+}
+@media only screen and (max-width: 950px){
+form {
+    width: 70%;
+}
+}
+@media only screen and (max-width: 600px){
+
+    form input[type='text'], form input[type='email'], form input[type='password']{
+    margin-top: 4%; 
+     }
+     form p{
+        margin-top: 5%;
+     }
 }

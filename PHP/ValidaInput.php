@@ -1,54 +1,69 @@
 <?php
 include_once "GetInput.php";
-$EmailLogin = $GetInputLogin -> GetEmailLogin();
-$SenhaLogin = $GetInputLogin -> GetSenhaLogin();
-
-$NomeCadastro = $GetInputCadastro -> GetNomeCadastro();
-$EmailCadastro = $GetInputCadastro -> GetEmaiCadastro();
-$SenhaCadastro = $GetInputCadastro -> GetSenhaCadastro();
-$ConfirmaSenhaCadastro = $GetInputCadastro -> GetConfirmaSenhaCadastro();
- class ValidaLogin{
-    public function ValidaEmailLogin($EmailLogin){
-          if(strlen($EmailLogin)<=0){
-             echo "Preenche o Campo Email";
-          }else if(!filter_Var($EmailLogin, FILTER_VALIDATE_EMAIL)){
-             echo "Email Inválido";
-          }else{
-            return true;
-          }
-    }
-    public function ValidaSenhaLogin($SenhaLogin){
-        if(strlen($SenhaLogin)<=0){
-            echo "Preenche o Campo Senha";
-        }else if(!preg_match('/^[A-Za-z0-9- ]+$/', $SenhaLogin)){
-            echo "Campo Senha Inválido";
-        }else {
-            return true;
-        }
-    }
- }
- class ValidaCadastro{
-        public function ValidaNomeCadastro($NomeCadastro){
-           if(strlen($NomeCadastro)<=0){
+$Email = $GetInput -> GetEmail();
+$Nome = $GetInput -> GetNome();
+$Senha = $GetInput -> GetSenha();
+$ConfirmaSenha = $GetInput -> GetConfirmaSenha();
+ class ValidaInput{
+    public $EmailValidado;
+    public $NomeValidado;
+    public $SenhaValidado;
+    public $ConfirmaSenhaValidado;
+        public function ValidaNome($Nome){
+           if(strlen($Nome)<=0){
              echo "Preenche o Campo Nome";
-           }
-        }
-        public function ValidaEmailCadastro($EmailCadastro){
-         if(strlen($EmailCadastro)<=0){
-            echo "Preenche o Campo Email";
-         }
-        }
-        public function ValidaSenhaCadastro($SenhaCadastro){
-            if(strlen($SenhaCadastro)<=0){
-              echo "Preenche o Campo Senha";
+           }else if(strlen($Nome)>= 21){
+             echo "Somente o Primeiro Nome";
+           }else if(preg_match('/^[\d\-]+$/', $Nome) > 0) {
+              echo "Nome Inválido";
+            }else{
+               return $this-> NomeValidado = true;
             }
         }
-        public function ValidaSenhaConfirmaCadastro($ConfirmaSenhaCadastro){
-           if(strlen($ConfirmaSenhaCadastro)<=0){
-             echo "Preenche o Campo Confirma Nome";
+        public function ValidaEmail($Email){
+         if(strlen($Email)<=0){
+            echo "Preenche o Campo Email";
+         }else if(strlen($Email)>= 41){
+             echo "Campo Email Inválido";
+         }else if(!filter_var($Email, FILTER_VALIDATE_EMAIL)){
+              echo "Campo Email Inválido";
+         }else{
+           return $this-> EmailValidado = true;
+         }
+         }
+        
+        public function ValidaSenha($Senha){
+            if(strlen($Senha)<=0){
+              echo "Preenche o Campo Senha";
+            }else if(strlen($Senha)>=1 && strlen($Senha) <=6){
+              echo "No Mínimo 7 Caracteres";
+            }else if(strlen($Senha)>=41){
+              echo "Campo Senha Muito Grande";
+            }else{
+              return $this-> SenhaValidado = true; 
+            }
+        }
+        public function ValidaSenhaConfirma($ConfirmaSenha, $Senha){
+           if(strlen($ConfirmaSenha)<=0){
+             echo "Preenche o Campo Confirma A Senha";
+           }else if($ConfirmaSenha != $Senha){
+             echo "A Senha Tem Que Ser Identica";
+           }else{
+            return $this-> ConfirmaSenhaValidado = true;
            }
+        } 
+        public function LoginValidado(){
+          if($this-> EmailValidado == true && $this-> SenhaValidado == true){
+              echo "Logar";
+          }
+        }
+        public function CadastroValidado(){
+          if($this-> EmailValidado == true && $this-> SenhaValidado == true &&
+             $this-> NomeValidado == true && $this-> ConfirmaSenhaValidado == true){
+            echo "Cadastrar";
+        }
         }
  }
- $LoginValidado = new ValidaLogin();
- $CadastroValidado = new ValidaCadastro();
+
+ $InputsValidadacao = new ValidaInput();
 ?>
