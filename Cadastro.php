@@ -13,8 +13,7 @@ include_once "php/Value.php";
   <link rel="stylesheet" type="text/css" href="css/Menu.css">
   <link rel="stylesheet" type="text/css" href="css/form.css">
 </head>
-<body>
-  <!-- onload="return Validacao();" -->
+<body onload="return CadastroInputs();">
 <nav>
 <img width="50" height="50" src="https://img.icons8.com/ios/50/menu--v1.png" onclick="return OpenMenu();" id="ImgMenu">
 
